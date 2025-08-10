@@ -5,73 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Enhanced HTML5 Content & Form</title>
   <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #333;
+      --heading: #1f4b6e;
+      --accent: #2b8de0;
+      --border: #dce3e8;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 20px;
-      background-color: #f7f7f7;
-      color: #333;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
+
     header, main, footer {
       max-width: 900px;
       margin: auto;
-      background: #fff;
-      padding: 20px;
+      background: var(--card);
+      padding: 25px;
       margin-bottom: 20px;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
+
     h1, h2, h3 {
-      color: #004b6e;
+      color: var(--heading);
+      margin-top: 0;
     }
+
     table {
       border-collapse: collapse;
       width: 100%;
       margin-bottom: 20px;
+      background: var(--card);
     }
+
     th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
+      border: 1px solid var(--border);
+      padding: 12px;
       text-align: left;
     }
+
     th {
-      background-color: #e9f2f5;
+      background-color: #f1f6fa;
+      font-weight: 600;
     }
+
     ul, ol {
+      padding-left: 20px;
       margin-bottom: 20px;
     }
+
+    figure {
+      margin: 0 0 20px;
+    }
+
+    figure img {
+      border-radius: 8px;
+      display: block;
+    }
+
     form {
       display: grid;
-      gap: 15px;
+      gap: 20px;
     }
+
     fieldset {
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
       padding: 15px;
+      background: #fafcfd;
     }
+
     legend {
-      font-weight: bold;
-      color: #004b6e;
+      font-weight: 600;
+      color: var(--heading);
+      padding: 0 8px;
     }
+
     label {
       display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
+      margin-bottom: 6px;
+      font-weight: 500;
     }
-    input, select, textarea, button {
+
+    input, select, textarea {
       width: 100%;
-      padding: 8px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      background: white;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(43,141,224,0.15);
+    }
+
     button {
-      background-color: #004b6e;
+      background-color: var(--accent);
       color: white;
+      padding: 12px;
       border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
       cursor: pointer;
+      transition: background-color 0.2s;
     }
+
     button:hover {
-      background-color: #003b56;
+      background-color: #227ac4;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin: 0;
     }
   </style>
 </head>
@@ -79,11 +138,11 @@
 
 <header>
   <h1>HTML5 Content & Form Example</h1>
-  <p>This page demonstrates the use of semantic HTML elements, lists, tables, media, and a fully functional HTML5 form.</p>
+  <p>This page demonstrates semantic HTML elements, lists, tables, media, and a fully functional HTML5 form.</p>
 </header>
 
 <main>
-  <!-- Lists Section -->
+  <!-- Lists -->
   <section>
     <h2>Popular Web Development Languages</h2>
     <ul>
@@ -101,7 +160,7 @@
     </ol>
   </section>
 
-  <!-- Table Section -->
+  <!-- Table -->
   <section>
     <h2>HTML5 Form Attributes Overview</h2>
     <table>
@@ -132,26 +191,26 @@
     </table>
   </section>
 
-  <!-- Media Section -->
+  <!-- Media -->
   <section>
     <h2>HTML5 Media Examples</h2>
     <figure>
-      <img src="https://via.placeholder.com/600x200" alt="Placeholder banner" style="width:100%; border-radius:5px;">
+      <img src="https://via.placeholder.com/900x300" alt="Placeholder banner" style="width:100%;">
       <figcaption>A sample placeholder banner image</figcaption>
     </figure>
 
     <audio controls>
-      <source src="sample-audio.mp3" type="audio/mpeg">
+      <source src="https://freesound.org/people/designerschoice/" type="audio/mpeg">
       Your browser does not support the audio element.
     </audio>
 
     <video width="100%" controls>
-      <source src="sample-video.mp4" type="video/mp4">
+      <source src="https://www.youtube.com/shorts/Iggi7UGJIeI?feature=share" type="video/mp4">
       Your browser does not support the video element.
     </video>
   </section>
 
-  <!-- Form Section -->
+  <!-- Form -->
   <section>
     <h2>Registration Form</h2>
     <form action="#" method="post">
@@ -190,8 +249,10 @@
         </select>
 
         <label>Subscribe to newsletter?</label>
-        <input type="radio" id="yes" name="newsletter" value="yes" required> <label for="yes">Yes</label>
-        <input type="radio" id="no" name="newsletter" value="no" required> <label for="no">No</label>
+        <input type="radio" id="yes" name="newsletter" value="yes" required>
+        <label for="yes">Yes</label>
+        <input type="radio" id="no" name="newsletter" value="no" required>
+        <label for="no">No</label>
       </fieldset>
 
       <fieldset>
